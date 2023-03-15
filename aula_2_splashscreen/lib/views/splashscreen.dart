@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
@@ -15,15 +16,67 @@ class _SplashScreenState extends State<SplashScreen> {
     if(defaultTargetPlatform == TargetPlatform.android){
       return Scaffold(
         body: Container(
-          color: const Color(0xff320995 ),
-          padding: const EdgeInsets.all(60),
-          child: Center(
-            child: Lottie.asset('lib/assets/estudar.json'),
-          ),
+            color: const Color( 0xff320995 ),
+            child: Column(
+              children: <Widget>[
+                Expanded(
+                    flex: 2,
+                    child: Align(
+                      alignment: Alignment.bottomCenter,
+                      child: Lottie.asset('lib/assets/estudar.json'),
+                    )
+                ),
+                const Expanded(
+                  flex: 1,
+                  child: Align(
+                      alignment: Alignment.bottomCenter,
+                      child: SafeArea(
+                        child: Text(
+                          '\u00a9Smart Student',
+                          style: TextStyle(
+                              fontSize: 20,
+                              color: Colors.grey
+                          ),
+                        ),
+                      )
+                  ),
+                ),
+              ],
+            )
         ),
       );
     } else if(defaultTargetPlatform == TargetPlatform.iOS){
-        return const Text('iOS');
+        return Scaffold(
+          body: Container(
+              color: const Color( 0xff320995 ),
+              child: Column(
+                children: <Widget>[
+                  Expanded(
+                      flex: 2,
+                      child: Align(
+                        alignment: Alignment.bottomCenter,
+                        child: Lottie.asset('lib/assets/estudar.json'),
+                      )
+                  ),
+                  const Expanded(
+                    flex: 1,
+                    child: Align(
+                        alignment: Alignment.bottomCenter,
+                        child: SafeArea(
+                          child: Text(
+                            '\u00a9Smart Student',
+                            style: TextStyle(
+                                fontSize: 20,
+                                color: Colors.grey
+                            ),
+                          ),
+                        )
+                    ),
+                  ),
+                ],
+              )
+          ),
+        );
     } else {
         return const Text('System not detected');
     }
